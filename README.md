@@ -1,6 +1,18 @@
 # Enterprise Software Security (ESS) Lab Programs
 
-This repository contains practical implementations, vulnerability demonstrations, security test cases, and penetration testing scripts for the **Enterprise Software Security (ESS)** laboratory curriculum.
+<p align="center">
+  <img src="https://img.shields.io/github/stars/tharsan1305/ESS-REPO-?style=for-the-badge&color=gold" alt="GitHub Stars" />
+  <img src="https://img.shields.io/github/forks/tharsan1305/ESS-REPO-?style=for-the-badge&color=blue" alt="GitHub Forks" />
+  <img src="https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Kali_Linux-Ready-557C94?style=for-the-badge&logo=kalilinux&logoColor=white" alt="Kali Linux" />
+  <img src="https://img.shields.io/badge/Security-Lab-red?style=for-the-badge&logo=shield" alt="Security" />
+</p>
+
+---
+
+<p align="center">
+  ⭐ <b>If you find this repository helpful, please consider giving it a star!</b> ⭐
+</p>
 
 ---
 
