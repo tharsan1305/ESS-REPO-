@@ -1,0 +1,13 @@
+# Binaries
+*.exe
+*.o
+*.obj
+
+# Python caches
+__pycache__/
+*.pyc
+
+# OS / Editor artifacts
+.DS_Store
+Thumbs.db
+.vscode/
