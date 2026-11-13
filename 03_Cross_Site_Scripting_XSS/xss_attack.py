@@ -1,14 +1,21 @@
-import html
 
-print("XSS Attack Demonstration")
+from flask import Flask, request
+from markupsafe import escape
 
-user_input = input("Enter your input: ")
+app = Flask(__name__)
 
-print("\nVulnerable Output:")
-print(user_input)
+@app.route("/", methods=["GET", "POST"])
+def home():
+    data = request.form.get("name", "")
+    output = data if "unsafe" in request.form else escape(data)
 
-print("\nSecure Output:")
-print(html.escape(user_input))
+    return f"""
+    <form method="POST">
+        <input name="name">
+        <button name="unsafe">Unsafe</button>
+        <button name="safe">Safe</button>
+    </form>
+    <h3>{output}</h3>
+    """
 
-print("\nTesting Completed")
-
+app.run()

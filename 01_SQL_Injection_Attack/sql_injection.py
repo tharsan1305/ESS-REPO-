@@ -1,63 +1,40 @@
+
 import sqlite3
 
-# Create database
-conn = sqlite3.connect(":memory:")
-cursor = conn.cursor()
+con = sqlite3.connect(":memory:")
+cur = con.cursor()
 
-# Create user table
-cursor.execute("""
-CREATE TABLE users (
-    username TEXT,
-    password TEXT
-)
-""")
+cur.execute("CREATE TABLE users(username TEXT, password TEXT)")
+cur.execute("INSERT INTO users VALUES('admin', '1234')")
 
-# Insert sample records
-cursor.execute("INSERT INTO users VALUES ('admin', '1234')")
-cursor.execute("INSERT INTO users VALUES ('student', 'pass123')")
+print("1. Vulnerable Login")
+print("2. Secure Login")
 
-print("===== SQL INJECTION ATTACK =====")
+choice = input("Enter choice: ")
 
-# Get user input
-username = input("Enter Username: ")
-password = input("Enter Password: ")
+username = input("Enter username: ")
+password = input("Enter password: ")
 
-# Vulnerable SQL query
-query = (
-    "SELECT * FROM users WHERE username = '"
-    + username
-    + "' AND password = '"
-    + password
-    + "'"
-)
+if choice == "1":
+    query = (
+        "SELECT * FROM users WHERE username='"
+        + username +
+        "' AND password='" + password + "'"
+    )
+    cur.execute(query)
 
-print("\nGenerated SQL Query:")
-print(query)
+elif choice == "2":
+    query = "SELECT * FROM users WHERE username=? AND password=?"
+    cur.execute(query, (username, password))
 
-# Execute vulnerable query
-cursor.execute(query)
-result = cursor.fetchall()
-
-if result:
-    print("\nLogin Successful!")
-    print("User Records:", result)
 else:
-    print("\nInvalid Username or Password")
+    print("Invalid choice")
+    con.close()
+    exit()
 
-# Secure parameterized query
-print("\n===== SECURE LOGIN =====")
-
-cursor.execute(
-    "SELECT * FROM users WHERE username = ? AND password = ?",
-    (username, password)
-)
-
-secure_result = cursor.fetchall()
-
-if secure_result:
-    print("Secure Login Successful!")
+if cur.fetchone():
+    print("Login Successful")
 else:
-    print("Secure Login Failed!")
+    print("Login Failed")
 
-conn.close()
-
+con.close()

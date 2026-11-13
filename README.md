@@ -41,7 +41,9 @@ ESS-REPO-/
 ├── 02_Buffer_Overflow_Attack/
 │   └── buffer_overflow.c              # Buffer overflow condition detection in C
 ├── 03_Cross_Site_Scripting_XSS/
-│   └── xss_attack.py                  # Raw output vs HTML entity escaping in Python
+│   ├── xss_attack.py                  # CLI demonstration of HTML entity escaping
+│   ├── xss_vulnerable.py              # Vulnerable Flask web server (Port 5000)
+│   └── xss_secure.py                  # Secure Flask web server with Jinja2 auto-escaping (Port 5001)
 ├── 04_Web_Application_Penetration_Testing/
 │   └── web_pentest.sh                 # Bash script for host discovery, HTTP headers & Nmap
 ├── 05_Secure_Test_Cases/
